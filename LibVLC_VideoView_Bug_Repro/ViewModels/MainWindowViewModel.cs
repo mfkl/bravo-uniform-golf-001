@@ -17,6 +17,8 @@ namespace LibVLC_VideoView_Bug_Repro.ViewModels
         public MainWindowViewModel()
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
+            Core.Initialize();
+
             LibVLCZero = new LibVLC();
             LibVLCOne = new LibVLC();
             LibVLCTwo = new LibVLC();
@@ -135,8 +137,6 @@ namespace LibVLC_VideoView_Bug_Repro.ViewModels
             
             try
             {
-                LibVLCSharp.Shared.Core.Initialize();
-
                 var media0 = new Media(LibVLCZero, "v4l2:///dev/video0", FromType.FromLocation);
                 var media1 = new Media(LibVLCOne, "v4l2:///dev/video1", FromType.FromLocation);
                 var media2 = new Media(LibVLCTwo, "v4l2:///dev/video2", FromType.FromLocation);
